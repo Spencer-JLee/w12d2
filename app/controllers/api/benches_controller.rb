@@ -2,7 +2,7 @@ class Api::BenchesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @benches = Bench.all()
+        @benches = Bench.in_bounds(params[:bounds])
 
         render 'api/benches/index'
     end
